@@ -12,11 +12,6 @@ Class-based views
 Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
-<<<<<<< HEAD
-some comment just for git need to delete later
-=======
-	# just test comment need to delete later
->>>>>>> taras
 """
 from django.conf.urls import url, include
 from django.contrib import admin
