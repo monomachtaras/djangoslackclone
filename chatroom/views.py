@@ -1,7 +1,8 @@
+from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.views.generic.edit import FormView
 
-from .forms import UserCusetomForm
+from .forms import ProfileForm
 
 
 class MainPage(TemplateView):
@@ -10,8 +11,9 @@ class MainPage(TemplateView):
 
 class RegistrationView(FormView):
     template_name = "registration/registration_form.html"
-    form_class = UserCusetomForm
-    success_url = ""
+    form_class = ProfileForm
+
+    success_url = "/"
 
     def form_valid(self, form):
         form.save()
