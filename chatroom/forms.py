@@ -4,6 +4,8 @@ from .models import CustomUser
 
 class UserCustomForm(forms.ModelForm):
 
+    password = forms.CharField(widget=forms.PasswordInput())
+
     def save(self, commit=True):
         # Save the provided password in hashed format
         user = super(UserCustomForm, self).save(commit=False)

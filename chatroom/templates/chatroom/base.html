@@ -4,62 +4,143 @@
 
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
 
     {% block title %}<title>Djangoslackclonee</title>{% endblock %}
 
-    <link rel="stylesheet" href="{% static "chatroom/css/bootstrap.min.css" %}">
+    <!-- CSS  -->
+{#    <link rel="stylesheet" href="{% static "chatroom/css/bootstrap.min.css" %}">#}
     <link rel="stylesheet" href="{% static "chatroom/css/main.css" %}">
+    <link rel="stylesheet" href="{% static "chatroom/materialize/css/materialize.css" %}">
+    <link rel="stylesheet" href="{% static "chatroom/materialize/css/style.css" %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
 
 </head>
 <body>
+<nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">#Djangoslackclone</a>
 
-<div class="container-fluid">
-    <div class="row">
-<<<<<<< HEAD
-      <div class="col-sm-2">
-      {% block sidebar %}
-      <ul class="sidebar-nav">
-          <li><a href="/">Home</a></li>
-          <br>
-          {% if user.is_authenticated %}
-            <li>User: {{ user.get_username }}</li>
-            <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
-            <li><a href="{% url 'chatroom:user_detail' user.id %}">Profile</a></li>
-          {% else %}
-            <li><a href="{% url 'login' %}?next={{request.path}}">Login</a></li>
-              <li><a href="{% url 'chatroom:registration' %}">Registration</a></li>
-          {% endif %}
-      </ul>
-     {% endblock %}
-
-      </div>
-=======
-        <div class="col-sm-2">
-            {% block sidebar %}
-            <ul class="sidebar-nav">
-                <li><a href="/">Home</a></li>
-            <br>
+        <ul class="right hide-on-med-and-down">
             {% if user.is_authenticated %}
-                <li>User: {{ user.get_username }}</li>
-                <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
-            {% else %}
-                <li><a href="{% url 'login' %}?next={{request.path}}">Login</a></li>
-                <li><a href="{% url 'registration' %}">Registration</a></li>
-            {% endif %}
-            </ul>
-            {% endblock %}
-        </div>
->>>>>>> master
 
-      <div class="col-sm-10 ">
-         {% block content %}{% endblock %}
-      </div>
+                <li><i class="material-icons left">perm_identity</i>{{ user.get_username }}</li>
+
+                <li><a href="{% url 'chatroom:user_detail' user.id %}"><i class="material-icons right">assignment_ind</i>Profile</a></li>
+
+                <li class="active"><a href="{% url 'logout'%}?next={{request.path}}"><i class="material-icons right">power_settings_new</i>Logout</a></li>
+
+            {% else %}
+                <li><a href="{% url 'login' %}?next={{request.path}}"><i class="material-icons right">input</i>Login</a></li>
+
+                <li><a href="{% url 'chatroom:registration' %}"><i class="material-icons right">person_pin</i>Registration</a></li>
+            {% endif %}
+
+        </ul>
+
+        <ul id="nav-mobile" class="side-nav">
+            {% if user.is_authenticated %}
+                <li>Username: {{ user.get_username }}</li>
+
+                <li><a href="{% url 'chatroom:user_detail' user.id %}">Profile</a></li>
+
+                <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+
+            {% else %}
+
+                <li><a href="{% url 'login' %}?next={{request.path}}">Login</a></li>
+
+                <li><a href="{% url 'chatroom:registration' %}">Registration</a></li>
+            {% endif %}
+
+
+
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+</nav>
+
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+
+
+
 
     </div>
 </div>
 
 
+  <div class="container">
+    <div class="section">
 
-</body>
+      <!--   Icon Section   -->
+      <div class="row">
+
+
+              {% block content %}{% endblock %}
+
+
+          </div>
+        </div>
+
+      </div>
+
+
+    <br><br>
+
+    <div class="section">
+
+    </div>
+
+
+  <footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">#Djangoslackclone</h5>
+          <p class="grey-text text-lighten-4">Корпоративний месенджер. Його було запущено в тестовому режимі в серпні 2016 року,
+              публічний реліз відбувся 12 лютого 2014.
+              У перший день тестування зареєструвалося 8 тисяч компаній. На червень 2015-го,
+              Slack щодня використовували 1,1 мільйона користувачів. Завдяки своєму зросту Slack
+              став бізнес-застосунком, який показав найбільший ріст в історії.</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="/chatroom/static/chatroom/js/jquery-2.1.1.min.js"></script>
+  <script src="/chatroom/static/chatroom/js/main.js"></script>
+  <script src="{% static "chatroom/materialize/js/materialize.js" %}"></script>
+  <script src="{% static "chatroom/materialize/js/init.js" %}"></script>
+
+  </body>
 </html>
