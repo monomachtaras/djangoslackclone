@@ -7,6 +7,7 @@ from django.urls import reverse
 class CustomUser(AbstractUser):
     """" this is our base user class    """
 
+    activation_key = models.CharField(max_length=40, blank=True)
     image = models.ImageField(blank=True)
 
     def get_absolute_url(self):

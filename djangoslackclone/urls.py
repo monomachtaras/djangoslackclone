@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import RedirectView
+from chatroom.views import activation
 
 
 urlpatterns = [
@@ -23,4 +24,5 @@ urlpatterns = [
     url(r'^chatroom/', include("chatroom.urls")),
     url(r'^$', RedirectView.as_view(url="/chatroom/", permanent=True)),
     url('^accounts/', include('django.contrib.auth.urls')),
+    url(r'^activate/(?P<key>.+)$', activation, name='activation'),
 ]

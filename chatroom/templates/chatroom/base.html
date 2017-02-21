@@ -68,9 +68,12 @@
     <div class="section">
 
         {% block content %}
-
+            {% if message %}
+            {{ message }}
+            {% endif %}
             <div class="row">
-            <h1>Тут скоро щось буде</h1>
+            <h1>Тут скоро щось буде
+
             <div class="progress">
             <div class="indeterminate"></div>
             </div>
