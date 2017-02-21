@@ -1,7 +1,9 @@
+
 from django.views.generic import TemplateView, ListView, DetailView
 from django.views.generic.edit import FormView
 from .forms import UserCustomForm
 from .models import CustomUser
+
 
 
 class MainPage(TemplateView):

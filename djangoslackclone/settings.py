@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'djangoslackclone.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'database.sqlite3'),
     }
 }
 
@@ -124,3 +124,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'mediaglobal')
 
 
 LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = ''
