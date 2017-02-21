@@ -1,6 +1,7 @@
 
 from django.views.generic import TemplateView, ListView, DetailView
 from django.views.generic.edit import FormView
+from django.shortcuts import get_object_or_404, redirect, render
 from .forms import UserCustomForm
 from .models import CustomUser
 
@@ -30,3 +31,11 @@ class CustomUserDetailView(DetailView):
     template_name = 'chatroom/user_page.html'
 
 
+def activation(request, key):
+    profile = get_object_or_404(CustomUser, activation_key=key)
+    if profile.is_active == False:
+        profile.is_active = True
+        profile.save()
+        return render(request, 'chatroom/base.html', {'message':"Your account was activated"})
+
+    return redirect(r'/')
