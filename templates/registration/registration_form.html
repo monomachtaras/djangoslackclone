@@ -1,11 +1,15 @@
 {% extends "chatroom/base.html" %}
 
 {% block content %}
+    <br>
 
-    <form method="post" action="{% url 'registration' %}">
+    <form method="post" action="{% url 'chatroom:registration' %}" enctype="multipart/form-data">
     {% csrf_token %}
 
-    {{ form }}
+
+        {{ form.as_p }}
+
+        <input type="submit" placeholder="Register">
 
     </form>
 

@@ -14,10 +14,9 @@
 </head>
 <body>
 
-
 <div class="container-fluid">
-
     <div class="row">
+<<<<<<< HEAD
       <div class="col-sm-2">
       {% block sidebar %}
       <ul class="sidebar-nav">
@@ -26,19 +25,39 @@
           {% if user.is_authenticated %}
             <li>User: {{ user.get_username }}</li>
             <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+            <li><a href="{% url 'chatroom:user_detail' user.id %}">Profile</a></li>
           {% else %}
             <li><a href="{% url 'login' %}?next={{request.path}}">Login</a></li>
-              <li><a href="{% url 'registration' %}">Registration</a></li>
+              <li><a href="{% url 'chatroom:registration' %}">Registration</a></li>
           {% endif %}
       </ul>
      {% endblock %}
 
       </div>
+=======
+        <div class="col-sm-2">
+            {% block sidebar %}
+            <ul class="sidebar-nav">
+                <li><a href="/">Home</a></li>
+            <br>
+            {% if user.is_authenticated %}
+                <li>User: {{ user.get_username }}</li>
+                <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}?next={{request.path}}">Login</a></li>
+                <li><a href="{% url 'registration' %}">Registration</a></li>
+            {% endif %}
+            </ul>
+            {% endblock %}
+        </div>
+>>>>>>> master
 
       <div class="col-sm-10 ">
-
-          {% block content %}{% endblock %}
+         {% block content %}{% endblock %}
       </div>
+
+    </div>
+</div>
 
 
 

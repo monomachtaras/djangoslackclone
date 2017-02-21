@@ -23,5 +23,4 @@ urlpatterns = [
     url(r'^chatroom/', include("chatroom.urls")),
     url(r'^$', RedirectView.as_view(url="/chatroom/", permanent=True)),
     url('^accounts/', include('django.contrib.auth.urls')),
-
 ]
