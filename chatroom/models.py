@@ -1,15 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
+from django.urls import reverse
 
 
-class ChatUser(models.Model):
+class CustomUser(AbstractUser):
     """" this is our base user class    """
 
-    user = models.OneToOneField(User)
+    image = models.ImageField(blank=True)
+
+    def get_absolute_url(self):
+        return reverse('profile', args=[str(self.id)])
 
     def __str__(self):
-        return f"{self.user.first_name}{self.user.last_name}"
-
-
-
+        return f"{self.first_name}{self.last_name}{self.email}"
 

@@ -1,20 +1,45 @@
 <!DOCTYPE html>
+
+{% load staticfiles %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+
+    {% block title %}<title>Djangoslackclonee</title>{% endblock %}
+
+    <link rel="stylesheet" href="{% static "chatroom/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "chatroom/css/main.css" %}">
+
 </head>
 <body>
-<h1>MAin page chatroom</h1>
 
-{% if user.is_authenticated %}
-    {{ user.username }}
-{% else %}
-    <a href="{% url 'login' %}?next={{request.path}}">Login</a>
-{% endif %}
+<div class="container-fluid">
 
+    <div class="row">
+      <div class="col-sm-2">
+      {% block sidebar %}
+      <ul class="sidebar-nav">
+          <li><a href="/">Home</a></li>
+          <br>
+          {% if user.is_authenticated %}
+            <li>User: {{ user.get_username }}</li>
+            <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+            <li><a href="{% url 'chatroom:user_detail' user.id %}">Profile</a></li>
+          {% else %}
+            <li><a href="{% url 'login' %}?next={{request.path}}">Login</a></li>
+              <li><a href="{% url 'chatroom:registration' %}">Registration</a></li>
+          {% endif %}
+      </ul>
+     {% endblock %}
 
-{{request.path}}
+      </div>
+
+      <div class="col-sm-10 ">
+
+          {% block content %}{% endblock %}
+      </div>
+
 
 
 
