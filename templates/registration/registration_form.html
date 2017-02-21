@@ -6,9 +6,11 @@
     <form method="post" action="{% url 'chatroom:registration' %}" enctype="multipart/form-data">
     {% csrf_token %}
 
-    {{ form.as_p }}
 
-    <input type="submit" value="Register">
+        {{ form.as_p }}
+
+        <input type="submit" placeholder="Register">
+
     </form>
 
 {% endblock %}
