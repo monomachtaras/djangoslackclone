@@ -21,6 +21,6 @@ from django.views.generic import RedirectView
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^chatroom/', include("chatroom.urls")),
-    url(r'^$', RedirectView.as_view(url="/chatroom/", permanent=True))
-
+    url(r'^$', RedirectView.as_view(url="/chatroom/", permanent=True)),
+    url('^accounts/', include('django.contrib.auth.urls')),
 ]
