@@ -9,6 +9,7 @@ class CustomUser(AbstractUser):
     """" this is our base user class    """
 
     password = models.CharField(min_length=8, max_length=128)
+    activation_key = models.CharField(max_length=40, blank=True)
     image = models.ImageField(blank=True)
 
     def get_absolute_url(self):

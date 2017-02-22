@@ -1,10 +1,10 @@
 
 from django.views.generic import TemplateView, ListView, DetailView, UpdateView
 from django.views.generic.edit import FormView
+from django.shortcuts import get_object_or_404, redirect, render
 from .forms import UserCustomForm
 from .models import CustomUser, Room
 from  django.shortcuts import render
-
 
 
 class MainPage(TemplateView):
@@ -48,3 +48,14 @@ def chat_room(request, label='taras'):
         'room': room,
         'messages': messages,
     })
+
+def activation(request, key):
+    profile = get_object_or_404(CustomUser, activation_key=key)
+    if profile.is_active == False:
+        profile.is_active = True
+        profile.activation_key = ''
+        profile.save()
+        return render(request, 'chatroom/base.html', {'message' : "Your account was activated"})
+    else:
+        return render(request, 'chatroom/base.html', {'message' : "Error! your account have already been activated"})
+
