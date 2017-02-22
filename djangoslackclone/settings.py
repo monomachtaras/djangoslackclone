@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'chatroom',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +71,14 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'djangoslackclone.wsgi.application'
+
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgiref.inmemory.ChannelLayer",
+        "ROUTING": "myproject.routing.channel_routing",
+    },
+}
 
 
 # Database
