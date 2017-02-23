@@ -27,6 +27,7 @@ class UserCustomForm(forms.ModelForm):
         user.set_password(self.cleaned_data["password"])
         user.is_active = False
         user.activation_key = generate_key(user.username)
+        # user.key_expires = datetime.strftime(datetime.now() + timedelta(days=2), "%Y-%m-%d %H:%M:%S")
         data = {'activation_key' : user.activation_key, 'user_mail' : user.email}
         send_email(data)
         if commit:
