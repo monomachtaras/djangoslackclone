@@ -4,6 +4,7 @@ from django.shortcuts import get_object_or_404, render
 from .forms import UserCustomForm
 from .models import CustomUser
 from django.shortcuts import render
+import requests
 
 
 
@@ -47,3 +48,13 @@ def activation(request, key):
         return render(request, 'chatroom/base.html', {'message': "Your account was activated"})
     else:
         return render(request, 'chatroom/base.html', {'message': "Error! your account have already been activated"})
+
+
+# need to delete
+def some_test(request):
+    resp = requests.get('https://todolist.example.com/tasks/')
+    if resp.status_code != 200:
+        # This means something went wrong.
+        raise Exception('GET /tasks/ {}'.format(resp.status_code))
+    for todo_item in resp.json():
+        print('{} {}'.format(todo_item['id'], todo_item['summary']))
